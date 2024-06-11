@@ -1,18 +1,46 @@
-## Getting Started
+# Object-Oriented-Programming-HCMIU
+___Game project of OOP class___  
+__Game name__: Plants vs Zombies  
+__Plants vs Zombies__ (abbreviated as PvZ) is a tower defense video game developed and originally published by a group of HCMIU students. The game involves homeowners who use a variety of different plants to prevent waves of zombies from entering their houses and "eating their plaints".
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# Dev
+  + Nguyễn Minh Đạt 
+  + Đặng Hoang Nam
+  + Nguyễn Hoàng Thiện
+  + Nguyễn Hải Phú
+  + Hà Anh Khoa
 
-## Folder Structure
+## Object 
+● The code becomes more transparent, easily understandable, and concise.
 
-The workspace contains two folders by default, where:
+● The project represents a cohesive logical system, achieved by combining numerous related classes.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+● Each class contains multiple methods that perform distinct behaviors unique to that class.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Rules of the Game
+● Planting and Defense: Players must plant various types of plants to prevent zombies from reaching the house.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+● Sun Tokens: Used as in-game currency to buy plants, falling from the sky every few seconds in the day mode.
 
-## Dependency Management
+● Waiting Time: Each plant has a cooldown period before it can be planted again.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+● Lawnmowers: Act as a last line of defense, activating once zombies reach the house, but can be used only once per row.
+
+● Zombie Variations: Different types of zombies have varying defense and attack points, increasing in difficulty with each level.
+
+## Implementations 
+
+## Screenshots from the game
+
+## Acknowledgements
+●  Developed by HCMIU students.
+
+●  Inspired by the original Plants vs Zombies game by PopCap Games.
+
+●  We want to express our sincerest thanks to our lecturers and the people who have helped us to achieve this project's goals:
+
++ Dr. Tran Thanh Tung
+  
++ MSc. Nguyen Thanh Nghia
+
+
