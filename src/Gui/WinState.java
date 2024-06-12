@@ -3,23 +3,22 @@ package Gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-
 import PvZ.PvZ_Manager.Zombie.ZombieManager;
 
-public class GameOverState {
-    private Image overScene;
-    private Image newGame;
-    private Image exit;
+public class WinState {
+    private BufferedImage overScene;
+    private BufferedImage newGame;
+    private BufferedImage exit;
     private Rectangle bounds1;
     private Rectangle bounds2;
     private boolean checkPlay;
     private boolean checkExit;
     private GameLoop gameLoop;
-    public GameOverState(GameLoop gameLoop) {
+    public WinState(GameLoop gameLoop) {
         this.gameLoop=gameLoop;
         importImage();
         bounds1 = new Rectangle(400, 500, 200, 100);
@@ -60,7 +59,7 @@ public class GameOverState {
 
     public void importImage() {
         try {
-            overScene = ImageIO.read(getClass().getResourceAsStream("/Resource/WinScence/GameOver.png"));
+            overScene = ImageIO.read(getClass().getResourceAsStream("/Resource/WinScence/Win.png"));
             newGame = ImageIO.read(getClass().getResourceAsStream("/Resource/WinScence/GOver_NewGame_Button.png"));
             exit = ImageIO.read(getClass().getResourceAsStream("/Resource/WinScence/GOver_ExitGame_Button.png"));
         } catch (IOException e) {

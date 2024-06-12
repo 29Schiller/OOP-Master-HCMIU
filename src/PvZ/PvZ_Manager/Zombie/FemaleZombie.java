@@ -6,13 +6,14 @@ import Gui.AudioManager;
 
 import java.io.IOException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import PvZ.PvZ_Manager.Plant.Plants;
 
 public class FemaleZombie extends Zombie{
-    private Image[] FemaleZombieMoveImage = new Image[10];
-    private Image[] FemaleZombieAttackImage = new Image[8];
-    private Image[] FemaleZombieDeadImage = new Image[12];
+    private BufferedImage[] FemaleZombieMoveImage = new BufferedImage[10];
+    private BufferedImage[] FemaleZombieAttackImage = new BufferedImage[8];
+    private BufferedImage[] FemaleZombieDeadImage = new BufferedImage[12];
     private int moveIndex = 0;
     private int attackIndex = 0; 
     private int deadIndex = 0;

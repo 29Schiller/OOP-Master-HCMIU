@@ -1,6 +1,7 @@
 package PvZ.PvZ_Manager.Plant;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -8,9 +9,9 @@ import Gui.AudioManager;
 
 public class OptionPlants {
     private Rectangle bound1,bound2,bound3;
-    private Image peaChoose;
-    private Image wallNutChoose;
-    private Image sunFlowerChoose;
+    private BufferedImage peaChoose;
+    private BufferedImage wallNutChoose;
+    private BufferedImage sunFlowerChoose;
     private String Type;
     private boolean isChoose;
     private int rowSpawn;

@@ -1,6 +1,7 @@
 package PvZ.Sun;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -8,7 +9,7 @@ public class Sun {
     private int X;
     private int Y;
     private boolean isCollected;
-    private Image sunImage;
+    private BufferedImage sunImage;
     private int destruct = 75;
     private Rectangle bounds;
     public Sun(int X, int Y) {

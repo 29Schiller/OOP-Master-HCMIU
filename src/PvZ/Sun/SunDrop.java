@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.io.IOException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import Gui.AudioManager;;
 
@@ -17,7 +18,7 @@ public class SunDrop extends JPanel{
     private int startX;
     private int startY;
     private int EndY = 750 / 2;
-    private Image storageImage;
+    private BufferedImage storageImage;
     Random random = new Random();
     private int sunscore=150;
     public AudioManager sound = new AudioManager();

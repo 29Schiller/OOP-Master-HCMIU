@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 public class CustomFont {
     private static Font gameFont;
-
     static {
         try {
             InputStream fontFile = CustomFont.class.getResourceAsStream("/Resource/Font/FbUsv8C5eI.ttf");

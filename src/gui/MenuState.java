@@ -1,16 +1,16 @@
 package Gui;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class MenuState {
     private GameLoop gameLoop;
-    private Image menuGame;
-    private Image pvz_logo;
-    private Image playButton;
+    private BufferedImage menuGame;
+    private BufferedImage pvz_logo;
+    private BufferedImage playButton;
     private Rectangle bounds;
     public AudioManager sound = new AudioManager();
 
@@ -18,7 +18,7 @@ public class MenuState {
         this.gameLoop=gameLoop;
         bounds=new Rectangle(400,500,500,100);
         importImage();
-        AudioManager.play_Theme();
+        //AudioManager.play_Theme();
     }
     public void importImage(){
         try {menuGame=ImageIO.read(getClass().getResourceAsStream("/Resource/MenuGame/wallpaper.jpg"));

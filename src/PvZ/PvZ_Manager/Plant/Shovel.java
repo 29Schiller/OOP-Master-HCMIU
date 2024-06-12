@@ -1,13 +1,13 @@
 package PvZ.PvZ_Manager.Plant;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Shovel {
-    private Image shovelImage;
+    private BufferedImage shovelImage;
     private boolean isChoose=false;
     private Rectangle bounds;
     private OptionPlants op;

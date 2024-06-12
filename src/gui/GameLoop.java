@@ -10,12 +10,12 @@ public class GameLoop extends JPanel implements Runnable {
     private final long PERIOD = 1000 * 1000000 / FPS; 
     private MenuState menuGame;
     private Playing playing;
-    private GameOverState overGame;
-
+    private LooseState loose;
+    private WinState win;
      public GameLoop() {
         isRunning = true;
         initclasses();
-        MouseManager mouseListener = new MouseManager(this, menuGame,playing, overGame);
+        MouseManager mouseListener = new MouseManager(this, menuGame,playing, loose);
         this.addMouseListener(mouseListener);
     }
 
@@ -36,14 +36,18 @@ public class GameLoop extends JPanel implements Runnable {
         return playing;
     }
 
-    public GameOverState getOverGame() {
-        return overGame;
+    public LooseState getOverGame() {
+        return loose;
+    }
+    public WinState getWinState() {
+        return win;
     }
 
     public void initclasses() {
         menuGame = new MenuState(this);
         playing = new Playing(this);
-        overGame = new GameOverState(this);
+        loose = new LooseState(this);
+        win =new WinState(this);
     }
 
     @Override
@@ -60,9 +64,11 @@ public class GameLoop extends JPanel implements Runnable {
             case PLAYING:
                 playing.render(g2);
                 break;
-            case OVERGAME:
-                overGame.render(g2);
+            case LOOSE:
+                loose.render(g2);
                 break;
+            case WIN:
+                win.render(g2);
         }
     }
     @Override

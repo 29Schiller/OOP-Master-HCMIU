@@ -1,15 +1,16 @@
 package PvZ.PvZ_Manager.Bullet;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+
 import PvZ.PvZ_Manager.Zombie.*;
 
 public class Bullet {
     private int x, y;
     private int damage,speed = 4;
-    private Image image;
+    private BufferedImage image;
     private boolean Collide=false;
-    public Bullet(int x, int y,int damage, Image image) {
+    public Bullet(int x, int y,int damage, BufferedImage image) {
         this.x = x;
         this.y = y;
         this.damage=damage;

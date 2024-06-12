@@ -1,7 +1,7 @@
 package PvZ.PvZ_Manager.Plant;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class SunFlower extends Plants{
     private int timeIndex=0;
     private int frameDelay = 3;
     private int frameCounter = 0;
-    private Image[] SunFlowerImage= new Image[30];
+    private BufferedImage[] SunFlowerImage= new BufferedImage[30];
     private ArrayList<Sun> sunList= new ArrayList<>();
     Random random=new Random();
     public SunFlower(int X, int row, boolean frozzen) {

@@ -17,7 +17,7 @@ import PvZ.PvZ_Manager.Zombie.Zombie;
 import PvZ.PvZ_Manager.Zombie.ZombieManager;
 import PvZ.Sun.SunDrop;
 
-public class Playing extends JPanel{
+public class Playing extends JPanel {
     private SunDrop sunDrop;
     private Shovel shovel;
     private PlantsManager plantsManager;
@@ -28,20 +28,21 @@ public class Playing extends JPanel{
     private Map_Background bg;
     private FlagMeter flag;
     private TitleLevelGame titleLevelGame;
-    private Random random;
+    public static Random random = new Random();
     private Timer sunTimer;
     private Timer sunMovementTimer;
     private Timer lawnActionTimer;
     private Timer zombieSpawnTimer;
     private Timer zombieActionTimer;
     private static boolean gameEnded = false;
-    private boolean titleDrawn = false; 
+    private boolean titleDrawn = false;
     public AudioManager sound = new AudioManager();
 
     public Playing(GameLoop gameLoop) {
         this.gameLoop = gameLoop;
         initializeGameComponents();
     }
+
     // Restart New Game
     public void initializeGameComponents() {
         sunDrop = new SunDrop();
@@ -50,18 +51,19 @@ public class Playing extends JPanel{
         plantsManager = new PlantsManager();
         zombieManager = new ZombieManager();
         ZombieManager.resetStaticVariables();
+        ZombieManager.setLevel(random.nextInt(6) + 1);
+        zombieManager.updateMaxZombies();
+        zombieManager.updateMaxZombies();
         bg = new Map_Background(this);
-        flag=new FlagMeter(zombieManager);
+        flag = new FlagMeter(zombieManager);
         titleLevelGame = new TitleLevelGame();
         titleLevelGame.showTitleForDuration(4);
-        shovel=new Shovel(plantsManager,optionPlants);
-        random = new Random();
+        shovel = new Shovel(plantsManager, optionPlants);
         gameEnded = false;
         titleDrawn = false;
     }
 
     public void stopGame() {
-        
         if (sunTimer != null) {
             sunTimer.cancel();
         }
@@ -79,7 +81,7 @@ public class Playing extends JPanel{
         }
         gameEnded = false;
     }
-    
+
     public void startGame() {
         startSunSpawner();
         LawnAction();
@@ -93,10 +95,10 @@ public class Playing extends JPanel{
         startGame();
     }
 
-    //User Mouse Click
+    // User Mouse Click
     public void handleMouseClick(int mouseX, int mouseY) {
         sunDrop.handleSunClick(mouseX, mouseY);
-        if (optionPlants.isChoose()==false) {
+        if (optionPlants.isChoose() == false) {
             optionPlants.handPlantsChoose(mouseX, mouseY);
         } else {
             int previous_X = optionPlants.getXSpwan();
@@ -108,14 +110,14 @@ public class Playing extends JPanel{
                 repaint();
             }
         }
-        if(shovel.isChoose()==false){
+        if (shovel.isChoose() == false) {
             shovel.chooseShovel(mouseX, mouseY);
-        } else{shovel.chooseShovel(mouseX, mouseY);
-                if(shovel.isChoose()==true){
+        } else {
+            shovel.chooseShovel(mouseX, mouseY);
+            if (shovel.isChoose() == true) {
                 shovel.RemovePlant(mouseX, mouseY);
             }
         }
-
     }
 
     // Game Action
@@ -141,7 +143,6 @@ public class Playing extends JPanel{
                 repaint();
             }
         }, 0, 125);
-        
     }
 
     public void LawnAction() {
@@ -161,7 +162,6 @@ public class Playing extends JPanel{
 
     public void startCharacterSpawnAndAction() {
         int maxZombies = ZombieManager.getLevel() * 10;
-        System.out.println("in Playing Max Zombie is: "+maxZombies);
         zombieSpawnTimer = new Timer();
         zombieSpawnTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -171,19 +171,17 @@ public class Playing extends JPanel{
                         zombieSpawnTimer.cancel();
                         return;
                     }
-                    if(ZombieManager.getCountZombie()<maxZombies){
                         zombieManager.waveZombie();
-                    }
                     if (zombieManager.ZombieList().isEmpty() && ZombieManager.getCountZombie() >= maxZombies && !gameEnded) {
                         gameEnded = true;
                         AudioManager.Win();
-                        GameScenes.setGameScenes(GameScenes.OVERGAME);
+                        GameScenes.setGameScenes(GameScenes.WIN);
                         gameLoop.repaint();
                     }
                 }
             }
         }, 0, new Random().nextInt(5000) + 2000);
-    
+
         zombieActionTimer = new Timer();
         zombieActionTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -199,11 +197,11 @@ public class Playing extends JPanel{
                     zombieManager.ZombieDead();
                     plantsManager.DeadPlant();
                     for (Zombie zombie : zombieManager.ZombieList()) {
-                        if (zombie.getX() <= 200) {
+                        if (zombie.getX() <= 150) {
                             gameEnded = true;
                             AudioManager.CrazyDaveScream();
                             AudioManager.Lose();
-                            GameScenes.setGameScenes(GameScenes.OVERGAME);
+                            GameScenes.setGameScenes(GameScenes.LOOSE);
                             gameLoop.repaint();
                             break;
                         }
@@ -225,6 +223,7 @@ public class Playing extends JPanel{
         zombieManager.render(g2);
         titleLevelGame.render(g2);
     }
+
     public static boolean isGameEnded() {
         return gameEnded;
     }

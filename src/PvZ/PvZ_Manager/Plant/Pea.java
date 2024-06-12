@@ -1,7 +1,7 @@
 package PvZ.PvZ_Manager.Plant;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,9 @@ import PvZ.Sun.SunDrop;
 import PvZ.PvZ_Manager.Bullet.*;
 
 public class Pea extends Plants{
-    private Image[] PeaNoActionImage = new Image[12];
-    private Image[] PeaActionImage = new Image[18];
-    private Image PeaBulletImage;
+    private BufferedImage[] PeaNoActionImage = new BufferedImage[12];
+    private BufferedImage[] PeaActionImage = new BufferedImage[18];
+    private BufferedImage PeaBulletImage;
     private int attackIndex = 0;
     private int noActionIndex = 0;
     private boolean isDrawingFirstSetNoAction = true;
@@ -46,7 +46,7 @@ public class Pea extends Plants{
     @Override
     public void Action(Zombie zombie,SunDrop sunDrop) {
         long currentTime = System.currentTimeMillis();
-        if (zombie.getX()<=1220 &&zombie.getX() - this.getX() <= 800 && zombie.getRow() == this.getRow() && (currentTime - getLastActionkTime()) >= getTimeCDaction()) {
+        if (zombie.getX()<=1250 &&zombie.getX() - this.getX() <= 800 && zombie.getRow() == this.getRow() && (currentTime - getLastActionkTime()) >= getTimeCDaction()) {
             setisAction(true);
             setLastActionkTime(currentTime); 
         }

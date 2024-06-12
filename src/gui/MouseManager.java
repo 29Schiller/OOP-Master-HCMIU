@@ -5,14 +5,14 @@ import java.awt.event.MouseEvent;
 
 public class MouseManager extends MouseAdapter{
     private MenuState menuGame;
-    private GameOverState overGame;
+    private LooseState loose;
     private Playing playing;
     private GameLoop gameLoop;
 
-    public MouseManager(GameLoop gameLoop, MenuState menuGame,Playing playing, GameOverState overGame) {
+    public MouseManager(GameLoop gameLoop, MenuState menuGame,Playing playing, LooseState loose) {
         this.gameLoop = gameLoop;
         this.menuGame = menuGame;
-        this.overGame = overGame;
+        this.loose = loose;
         this.playing=playing;
     }
 
@@ -26,8 +26,8 @@ public class MouseManager extends MouseAdapter{
         }else if(GameScenes.gameScenes==GameScenes.PLAYING){
             playing.handleMouseClick(mouseX, mouseY);
         }
-         else if (GameScenes.gameScenes == GameScenes.OVERGAME) {
-           overGame.handleMouseClick(mouseX, mouseY);
+         else if (GameScenes.gameScenes == GameScenes.LOOSE) {
+            loose.handleMouseClick(mouseX, mouseY);
         }
     }
 }

@@ -1,7 +1,7 @@
 package PvZ.PvZ_Manager.Plant;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.List;
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class Wallnut extends Plants{
     private int timeIndex=0;
     private int frameDelay = 3;
     private int frameCounter = 0;
-    private Image[] WallNutImage=new Image[12];
+    private BufferedImage[] WallNutImage=new BufferedImage[12];
 
     @Override
     public void importImage() {
