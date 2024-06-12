@@ -43,7 +43,7 @@ public class FemaleZombie extends Zombie{
 
     @Override
     public void move() {
-        if (this.isCollide()!=true && getX()>=250) {
+        if (this.isCollide()!=true && getX()>=150) {
             setX(X -= speed);}}
 
     @Override

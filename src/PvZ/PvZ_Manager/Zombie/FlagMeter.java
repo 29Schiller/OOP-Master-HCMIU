@@ -10,7 +10,7 @@ public class FlagMeter {
     private Image FlagMeterEmpty;
     private int totalSpawn=ZombieManager.getLevel()*10;
     private int ratio=244/totalSpawn;
-    
+    private int FlagMeter=244;
     public FlagMeter(ZombieManager zombieManager){
         zombieManager=new ZombieManager();
         importImage();
@@ -25,6 +25,13 @@ public class FlagMeter {
     
     public void render(Graphics2D g2){
         g2.drawImage(FlagMeterFull, 1000, 10,250,30,null);
-        g2.drawImage(FlagMeterEmpty,1003,10,244-ratio*ZombieManager.getCountZombie(),30 , null);
+        if(FlagMeter>=0){
+            int FlagMeter=244-ratio*ZombieManager.getCountZombie();
+            g2.drawImage(FlagMeterEmpty,1003,10,FlagMeter,30 , null);
+        }
+        else {
+            FlagMeter=0;
+            g2.drawImage(FlagMeterEmpty,1003,10,FlagMeter,30 , null);
+        }
     }
 }

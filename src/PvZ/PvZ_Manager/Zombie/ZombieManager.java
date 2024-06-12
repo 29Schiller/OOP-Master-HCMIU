@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 import Gui.Playing;
 import PvZ.PvZ_Manager.Plant.Plants;
 
@@ -16,8 +15,10 @@ public class ZombieManager {
     private static int CountZombie = 0;
     private static int Points=0;
     private TitleLevelGame LevelBoard;
+    private int maxZombies = ZombieManager.getLevel() * 10;
     public ZombieManager() {
         LevelBoard = new TitleLevelGame();
+        System.out.println("in Zombie Manager Max Zombie is: "+maxZombies);
     }
 
     public void SpawnZombie(int type) {
@@ -32,29 +33,32 @@ public class ZombieManager {
         } else if (type == 1) {
             zombieList.add(new FemaleZombie(1300, Startrow));
             setCountZombie(getCountZombie() + 1);
-            Points += 20;
-        }
+            Points += 25;
+    }
     }
     public void waveZombie(){
-        int maxZombies = ZombieManager.getLevel() * 10;
         if (ZombieManager.getCountZombie() < maxZombies) {
             if(ZombieManager.getCountZombie()<=10){
-            this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                System.out.println(ZombieManager.getCountZombie());
             }
             else if(10<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=20){
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
+                System.out.println(ZombieManager.getCountZombie());
             }
             else if(20<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=30){
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
+                System.out.println(ZombieManager.getCountZombie());
             }
             else if(30<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=40){
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
+                System.out.println(ZombieManager.getCountZombie());
             }
             else if(40<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=50){
                 this.SpawnZombie(random.nextInt(2));
@@ -62,6 +66,7 @@ public class ZombieManager {
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
+                System.out.println(ZombieManager.getCountZombie());
             }
             else if(50<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=60){
                 this.SpawnZombie(random.nextInt(2));
@@ -70,7 +75,11 @@ public class ZombieManager {
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
                 this.SpawnZombie(random.nextInt(2));
-
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                System.out.println(ZombieManager.getCountZombie());
             }
         }
     }

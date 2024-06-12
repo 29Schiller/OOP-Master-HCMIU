@@ -56,7 +56,7 @@ public class MaleZombie extends Zombie{
 
     @Override
     public void move() {
-        if (!isCollide() && getX() >= 250) {
+        if (!isCollide() && getX() >= 150) {
             setX(X -= speed);
         }
     }

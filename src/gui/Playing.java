@@ -161,6 +161,7 @@ public class Playing extends JPanel{
 
     public void startCharacterSpawnAndAction() {
         int maxZombies = ZombieManager.getLevel() * 10;
+        System.out.println("in Playing Max Zombie is: "+maxZombies);
         zombieSpawnTimer = new Timer();
         zombieSpawnTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -170,7 +171,9 @@ public class Playing extends JPanel{
                         zombieSpawnTimer.cancel();
                         return;
                     }
-                    zombieManager.waveZombie();
+                    if(ZombieManager.getCountZombie()<maxZombies){
+                        zombieManager.waveZombie();
+                    }
                     if (zombieManager.ZombieList().isEmpty() && ZombieManager.getCountZombie() >= maxZombies && !gameEnded) {
                         gameEnded = true;
                         AudioManager.Win();
@@ -196,7 +199,7 @@ public class Playing extends JPanel{
                     zombieManager.ZombieDead();
                     plantsManager.DeadPlant();
                     for (Zombie zombie : zombieManager.ZombieList()) {
-                        if (zombie.getX() <= 20) {
+                        if (zombie.getX() <= 200) {
                             gameEnded = true;
                             AudioManager.CrazyDaveScream();
                             AudioManager.Lose();
