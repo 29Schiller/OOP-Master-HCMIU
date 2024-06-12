@@ -79,9 +79,9 @@ public class WinState {
 
     public void handleMouseClick(int mouseX, int mouseY) {
         if (this.getBounds1().contains(mouseX, mouseY)) {
-            gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
-            gameLoop.repaint(); 
+            gameLoop.getLevelstate();
+            GameScenes.setGameScenes(GameScenes.LEVEL); 
+            gameLoop.repaint();
         }
         if (this.getBounds2().contains(mouseX, mouseY)) {
             gameLoop.getMenuGame();

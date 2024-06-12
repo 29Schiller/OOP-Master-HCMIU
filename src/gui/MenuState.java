@@ -38,8 +38,8 @@ public class MenuState {
     }
     public void handleMouseClick(int mouseX, int mouseY) {
         if(this.getBounds().contains(mouseX,mouseY)){
-            gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
+            gameLoop.getLevelstate();
+            GameScenes.setGameScenes(GameScenes.LEVEL); 
             gameLoop.repaint();
         }
     }

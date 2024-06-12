@@ -12,10 +12,11 @@ public class GameLoop extends JPanel implements Runnable {
     private Playing playing;
     private LooseState loose;
     private WinState win;
+    private LevelScenes level;
      public GameLoop() {
         isRunning = true;
         initclasses();
-        MouseManager mouseListener = new MouseManager(this, menuGame,playing, loose,win);
+        MouseManager mouseListener = new MouseManager(this, menuGame,level,playing, loose,win);
         this.addMouseListener(mouseListener);
     }
 
@@ -42,9 +43,13 @@ public class GameLoop extends JPanel implements Runnable {
     public WinState getWinState() {
         return win;
     }
+    public LevelScenes getLevelstate() {
+        return level;
+    }
 
     public void initclasses() {
         menuGame = new MenuState(this);
+        level=new LevelScenes(this);
         playing = new Playing(this);
         loose = new LooseState(this);
         win =new WinState(this);
@@ -61,6 +66,9 @@ public class GameLoop extends JPanel implements Runnable {
             case MENU:
                 menuGame.render(g2);
                 break;
+            case LEVEL:
+                level.render(g2);
+                break;
             case PLAYING:
                 playing.render(g2);
                 break;
@@ -69,6 +77,7 @@ public class GameLoop extends JPanel implements Runnable {
                 break;
             case WIN:
                 win.render(g2);
+                break;
         }
     }
     @Override

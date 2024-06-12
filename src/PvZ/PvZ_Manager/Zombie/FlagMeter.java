@@ -8,12 +8,18 @@ import javax.imageio.ImageIO;
 public class FlagMeter {
     private BufferedImage FlagMeterFull;
     private BufferedImage FlagMeterEmpty;
-    private int totalSpawn=ZombieManager.getLevel()*10;
-    private int ratio=244/totalSpawn;
+    private int totalSpawn;
+    private int ratio;
     private int FlagMeter=244;
     public FlagMeter(ZombieManager zombieManager){
         zombieManager=new ZombieManager();
         importImage();
+        totalSpawn = ZombieManager.getLevel() * 10;
+        if (totalSpawn == 0) {
+            ratio = 244; 
+        } else {
+            ratio = 244 / totalSpawn;
+        }
     }
 
     public void importImage(){

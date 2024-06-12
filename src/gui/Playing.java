@@ -3,9 +3,8 @@ package Gui;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import PvZ.PvZ_Manager.Lawn.LawnManager;
 import PvZ.PvZ_Manager.Plant.OptionPlants;
@@ -51,8 +50,6 @@ public class Playing extends JPanel {
         plantsManager = new PlantsManager();
         zombieManager = new ZombieManager();
         ZombieManager.resetStaticVariables();
-        ZombieManager.setLevel(random.nextInt(6) + 1);
-        zombieManager.updateMaxZombies();
         zombieManager.updateMaxZombies();
         bg = new Map_Background(this);
         flag = new FlagMeter(zombieManager);
@@ -65,19 +62,19 @@ public class Playing extends JPanel {
 
     public void stopGame() {
         if (sunTimer != null) {
-            sunTimer.cancel();
+            sunTimer.stop();
         }
         if (sunMovementTimer != null) {
-            sunMovementTimer.cancel();
+            sunMovementTimer.stop();
         }
         if (lawnActionTimer != null) {
-            lawnActionTimer.cancel();
+            lawnActionTimer.stop();
         }
         if (zombieSpawnTimer != null) {
-            zombieSpawnTimer.cancel();
+            zombieSpawnTimer.stop();
         }
         if (zombieActionTimer != null) {
-            zombieActionTimer.cancel();
+            zombieActionTimer.stop();
         }
         gameEnded = false;
     }
@@ -98,7 +95,7 @@ public class Playing extends JPanel {
     // User Mouse Click
     public void handleMouseClick(int mouseX, int mouseY) {
         sunDrop.handleSunClick(mouseX, mouseY);
-        if (optionPlants.isChoose() == false) {
+        if (!optionPlants.isChoose()) {
             optionPlants.handPlantsChoose(mouseX, mouseY);
         } else {
             int previous_X = optionPlants.getXSpwan();
@@ -110,11 +107,11 @@ public class Playing extends JPanel {
                 repaint();
             }
         }
-        if (shovel.isChoose() == false) {
+        if (!shovel.isChoose()) {
             shovel.chooseShovel(mouseX, mouseY);
         } else {
             shovel.chooseShovel(mouseX, mouseY);
-            if (shovel.isChoose() == true) {
+            if (shovel.isChoose()) {
                 shovel.RemovePlant(mouseX, mouseY);
             }
         }
@@ -122,94 +119,80 @@ public class Playing extends JPanel {
 
     // Game Action
     public void startSunSpawner() {
-        sunTimer = new Timer();
-        sunTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                synchronized (sunDrop) {
-                    sunDrop.spawnSun();
-                }
-                repaint();
+        sunTimer = new Timer(2000 + random.nextInt(2500), e -> {
+            synchronized (sunDrop) {
+                sunDrop.spawnSun();
             }
-        }, 0, 2000 + random.nextInt(2500));
+            repaint();
+        });
+        sunTimer.start();
 
-        sunMovementTimer = new Timer();
-        sunMovementTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                synchronized (sunDrop) {
-                    sunDrop.sunMove();
-                }
-                repaint();
+        sunMovementTimer = new Timer(125, e -> {
+            synchronized (sunDrop) {
+                sunDrop.sunMove();
             }
-        }, 0, 125);
+            repaint();
+        });
+        sunMovementTimer.start();
     }
 
     public void LawnAction() {
         lawnManager.SpawnLawn();
-        lawnActionTimer = new Timer();
-        lawnActionTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                synchronized (zombieManager.ZombieList()) {
-                    lawnManager.Action(zombieManager.ZombieList());
-                    lawnManager.LawnDead();
-                }
-                repaint();
+        lawnActionTimer = new Timer(16, e -> {
+            synchronized (zombieManager.ZombieList()) {
+                lawnManager.Action(zombieManager.ZombieList());
+                lawnManager.LawnDead();
             }
-        }, 0, 125);
+            repaint();
+        });
+        lawnActionTimer.start();
     }
 
     public void startCharacterSpawnAndAction() {
         int maxZombies = ZombieManager.getLevel() * 10;
-        zombieSpawnTimer = new Timer();
-        zombieSpawnTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                synchronized (zombieManager.ZombieList()) {
-                    if (gameEnded) {
-                        zombieSpawnTimer.cancel();
-                        return;
-                    }
-                        zombieManager.waveZombie();
-                    if (zombieManager.ZombieList().isEmpty() && ZombieManager.getCountZombie() >= maxZombies && !gameEnded) {
-                        gameEnded = true;
-                        AudioManager.Win();
-                        GameScenes.setGameScenes(GameScenes.WIN);
-                        gameLoop.repaint();
-                    }
-                }
-            }
-        }, 0, new Random().nextInt(5000) + 2000);
 
-        zombieActionTimer = new Timer();
-        zombieActionTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                synchronized (zombieManager.ZombieList()) {
-                    if (gameEnded) {
-                        zombieActionTimer.cancel();
-                        return;
-                    }
-                    ArrayList<Zombie> zombiesCopy = new ArrayList<>(zombieManager.ZombieList());
-                    plantsManager.PlantsAction(zombiesCopy, sunDrop);
-                    zombieManager.ZombieAction(plantsManager.getPlantsList());
-                    zombieManager.ZombieDead();
-                    plantsManager.DeadPlant();
-                    for (Zombie zombie : zombieManager.ZombieList()) {
-                        if (zombie.getX() <= 150) {
-                            gameEnded = true;
-                            AudioManager.CrazyDaveScream();
-                            AudioManager.Lose();
-                            GameScenes.setGameScenes(GameScenes.LOOSE);
-                            gameLoop.repaint();
-                            break;
-                        }
+        zombieSpawnTimer = new Timer(new Random().nextInt(5000) + 2000, e -> {
+            synchronized (zombieManager.ZombieList()) {
+                if (gameEnded) {
+                    zombieSpawnTimer.stop();
+                    return;
+                }
+                zombieManager.waveZombie();
+                if (zombieManager.ZombieList().isEmpty() && ZombieManager.getCountZombie() >= maxZombies && !gameEnded) {
+                    gameEnded = true;
+                    AudioManager.Win();
+                    GameScenes.setGameScenes(GameScenes.WIN);
+                    gameLoop.repaint();
+                }
+            }
+        });
+        zombieSpawnTimer.start();
+
+        zombieActionTimer = new Timer(16, e -> { //60 fps
+            synchronized (zombieManager.ZombieList()) {
+                if (gameEnded) {
+                    zombieActionTimer.stop();
+                    return;
+                }
+                ArrayList<Zombie> zombiesCopy = new ArrayList<>(zombieManager.ZombieList());
+                plantsManager.PlantsAction(zombiesCopy, sunDrop);
+                zombieManager.ZombieAction(plantsManager.getPlantsList());
+                zombieManager.ZombieDead();
+                plantsManager.DeadPlant();
+                for (Zombie zombie : zombieManager.ZombieList()) {
+                    if (zombie.getX() <= 150) {
+                        gameEnded = true;
+                        AudioManager.CrazyDaveScream();
+                        AudioManager.Lose();
+                        GameScenes.setGameScenes(GameScenes.LOOSE);
+                        gameLoop.repaint();
+                        break;
                     }
                 }
-                repaint();
             }
-        }, 0, 200);
+            repaint();
+        });
+        zombieActionTimer.start();
     }
 
     public void render(Graphics2D g2) {
