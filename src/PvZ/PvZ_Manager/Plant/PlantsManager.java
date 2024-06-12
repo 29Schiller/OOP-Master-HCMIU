@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import Gui.AudioManager;
 import PvZ.PvZ_Manager.Zombie.Zombie;
 import PvZ.Sun.SunDrop;
 
@@ -52,6 +53,7 @@ public class PlantsManager {
                     int row = plant.getRow() - 1;
                     int col = (plant.getX() - 345) / 90;
                     iterator.remove();
+                    AudioManager.PlantDeath();
                     optionPlants.setOccupied(row, col, false);
                 }
             }

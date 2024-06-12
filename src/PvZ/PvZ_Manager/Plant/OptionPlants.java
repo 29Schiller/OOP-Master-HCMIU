@@ -3,7 +3,8 @@ package PvZ.PvZ_Manager.Plant;
 import java.awt.*;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import java.io.File;
+
+import Gui.AudioManager;
 
 public class OptionPlants {
     private Rectangle bound1,bound2,bound3;
@@ -43,15 +44,19 @@ public class OptionPlants {
     public void handPlantsChoose(int mouseX, int mouseY) {
         if (this.getBound1().contains(mouseX, mouseY)) {
             setChoose(true);
+            AudioManager.tapPlantBar();
             setType("Pea");
         }
         if (this.getBound2().contains(mouseX, mouseY)) {
             setChoose(true);
+            AudioManager.tapPlantBar();
             setType("WallNut");
         }
         if (this.getBound3().contains(mouseX, mouseY)) {
             setChoose(true);
-            setType("SunFlower");}
+            AudioManager.tapPlantBar();
+            setType("SunFlower");
+        }
     }
     public void ChoosePositionForPlant(int mouseX, int mouseY) {
         int row = -1, col = -1;

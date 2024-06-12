@@ -2,7 +2,6 @@ package PvZ.PvZ_Manager.Plant;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +46,7 @@ public class Pea extends Plants{
     @Override
     public void Action(Zombie zombie,SunDrop sunDrop) {
         long currentTime = System.currentTimeMillis();
-        if (zombie.getX() - this.getX() <= 800 && zombie.getRow() == this.getRow() && (currentTime - getLastActionkTime()) >= getTimeCDaction()) {
+        if (zombie.getX()<=1220 &&zombie.getX() - this.getX() <= 800 && zombie.getRow() == this.getRow() && (currentTime - getLastActionkTime()) >= getTimeCDaction()) {
             setisAction(true);
             setLastActionkTime(currentTime); 
         }
@@ -78,7 +77,7 @@ public class Pea extends Plants{
                 g2.drawImage(PeaActionImage[attackIndex], getX()+15 , getY(), 70, 80, null);
                 attackIndex++;
                 if (attackIndex == 17 && !bulletSpawned) { 
-                    bullets.add(new Bullet(this.getX()+50, this.getY(), this.getDamage(), PeaBulletImage));
+                    bullets.add(new Bullet(this.getX(), this.getY(), this.getDamage(), PeaBulletImage));
                     bulletSpawned = true; 
                 }
                 if (attackIndex >= PeaActionImage.length) {

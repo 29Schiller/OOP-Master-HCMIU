@@ -27,5 +27,5 @@ public class Bullet {
             zombie.setHP(zombie.getHP()-this.getDamage());}
     }
     public void render(Graphics2D g2) {
-        g2.drawImage(image, getX(), getY()+12,30,30 ,null);}
+        g2.drawImage(image, getX()+60, getY()+12,30,30 ,null);}
 }

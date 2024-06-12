@@ -5,32 +5,75 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import Gui.Playing;
 import PvZ.PvZ_Manager.Plant.Plants;
 
 public class ZombieManager {
     Plants plants;
-    static Random random = new Random();
+    private static Random random = new Random();
     private static int level = random.nextInt(6) + 1;
     private List<Zombie> zombieList = new CopyOnWriteArrayList<>();
     private static int CountZombie = 0;
     private static int Points=0;
+    private TitleLevelGame LevelBoard;
+    public ZombieManager() {
+        LevelBoard = new TitleLevelGame();
+    }
 
-    public ZombieManager() {}
-
-    public void SpawnZombie() {
+    public void SpawnZombie(int type) {
+        if (Playing.isGameEnded()) {
+            return;
+        }
         int Startrow = random.nextInt(5) + 1;
-        int type = random.nextInt(2);
         if (type == 0) {
             zombieList.add(new MaleZombie(1300, Startrow));
             setCountZombie(getCountZombie() + 1);
-            Points+=10;
+            Points += 10;
         } else if (type == 1) {
             zombieList.add(new FemaleZombie(1300, Startrow));
             setCountZombie(getCountZombie() + 1);
-            Points+=20;
+            Points += 20;
         }
     }
+    public void waveZombie(){
+        int maxZombies = ZombieManager.getLevel() * 10;
+        if (ZombieManager.getCountZombie() < maxZombies) {
+            if(ZombieManager.getCountZombie()<=10){
+            this.SpawnZombie(random.nextInt(2));
+            }
+            else if(10<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=20){
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+            }
+            else if(20<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=30){
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+            }
+            else if(30<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=40){
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+            }
+            else if(40<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=50){
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+            }
+            else if(50<ZombieManager.getCountZombie()&&ZombieManager.getCountZombie()<=60){
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
+                this.SpawnZombie(random.nextInt(2));
 
+            }
+        }
+    }
     public void ZombieAction(List<Plants> plantsList) {
         for (Zombie zombie : zombieList) {
             Plants closestPlant = null;
@@ -83,6 +126,7 @@ public class ZombieManager {
         return level;
     }
     public void render(Graphics2D g2){
+        LevelBoard.render(g2);
         synchronized (this.ZombieList()) {
             for (Zombie zombie : new CopyOnWriteArrayList<>(this.ZombieList())) {
                 zombie.renderZombiesAction(g2);

@@ -19,7 +19,7 @@ public class SunDrop extends JPanel{
     private int EndY = 750 / 2;
     private Image storageImage;
     Random random = new Random();
-    private int sunscore=1000;
+    private int sunscore=150;
     public AudioManager sound = new AudioManager();
     public SunDrop() {
         try {
@@ -51,7 +51,7 @@ public class SunDrop extends JPanel{
         for (Sun sun : SunList) {
             if (sun.getBounds().contains(mouseX, mouseY)) {
                 sunsToRemoveByClicked.add(sun);
-                sound.sunCollected();
+                AudioManager.sunCollected();
                 sun.acceptCollected(true);
                 sunscore+=25;}}
         SunList.removeAll(sunsToRemoveByClicked);
@@ -92,5 +92,4 @@ public class SunDrop extends JPanel{
         g2n.drawString(String.format("%d",100 ),295,75);
         g2n.drawString(String.format("%d",50 ),410,75);
     }
-
 }

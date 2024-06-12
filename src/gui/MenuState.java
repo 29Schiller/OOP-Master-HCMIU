@@ -3,10 +3,8 @@ package Gui;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import Gui.AudioManager;
 
 public class MenuState {
     private GameLoop gameLoop;
@@ -20,7 +18,7 @@ public class MenuState {
         this.gameLoop=gameLoop;
         bounds=new Rectangle(400,500,500,100);
         importImage();
-        sound.play_Theme();
+        AudioManager.play_Theme();
     }
     public void importImage(){
         try {menuGame=ImageIO.read(getClass().getResourceAsStream("/Resource/MenuGame/wallpaper.jpg"));

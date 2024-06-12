@@ -1,7 +1,9 @@
 package PvZ.PvZ_Manager.Zombie;
 
 import javax.imageio.ImageIO;
-import java.io.File;
+
+import Gui.AudioManager;
+
 import java.io.IOException;
 import java.awt.*;
 
@@ -20,7 +22,7 @@ public class FemaleZombie extends Zombie{
     public FemaleZombie(int X, int row) {
         super(X, row);
         setHP(160);
-        setSpeed(6);
+        setSpeed(10);
         setDamge(25);
         setAttackWaitingTime(1000);
         importImage(); 
@@ -54,6 +56,7 @@ public class FemaleZombie extends Zombie{
         long currentTime = System.currentTimeMillis();
         if (isCollide()==true && (currentTime - getLastAttackTime()) >= getAttackWaitingTime()) {
             plants.setHP(plants.getHP() - this.getDamage());
+            AudioManager.ZombieEat();
             setLastAttackTime(currentTime);}}
 
     @Override

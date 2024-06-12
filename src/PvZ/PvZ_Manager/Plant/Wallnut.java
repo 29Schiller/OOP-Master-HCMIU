@@ -3,10 +3,8 @@ package PvZ.PvZ_Manager.Plant;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.List;
-import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;
-import PvZ.PvZ_Manager.*;
 import PvZ.PvZ_Manager.Zombie.Zombie;
 import PvZ.Sun.SunDrop;
 

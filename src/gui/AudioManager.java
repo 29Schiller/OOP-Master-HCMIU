@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.net.URL;
 
 public class AudioManager {
-    private  Clip clips ;
+    private static Clip clips ;
     static URL soundURL[] = new URL[9];
 
     public AudioManager() {
@@ -27,7 +27,7 @@ public class AudioManager {
         }
     }
 
-    public void inputAudio(int i){
+    public static void inputAudio(int i){
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);
             clips = AudioSystem.getClip();
@@ -38,40 +38,47 @@ public class AudioManager {
         }
     }
 
-    public void play_Theme(){
+    public static void play_Theme(){
         inputAudio(7);
         clips.start();
-        clips.loop(clips.LOOP_CONTINUOUSLY);
+        clips.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
-    public void ZombieEat(){
+    public static void ZombieEat(){
         inputAudio(1);
         clips.start();
     }
 
-    public void ZombieStart(){
+    public static void ZombieStart(){
         inputAudio(8);
         clips.start();
     }
 
-    public void Win(){
+    public static void Win(){
         inputAudio(4);
         clips.start();
     }
 
-    public void Lose(){
+    public static void Lose(){
         inputAudio(5);
         clips.start();
     }
 
-    public void sunCollected(){
+    public static void sunCollected(){
         inputAudio(3);
         clips.start();
     }
 
-    public void tapPlantBar(){
+    public static void tapPlantBar(){
         inputAudio(0);
         clips.start();
     }
-
+    public static void PlantDeath() {
+        inputAudio(2);
+        clips.start();
+    }
+    public static void CrazyDaveScream(){
+        inputAudio(6);
+        clips.start();
+    }
 }

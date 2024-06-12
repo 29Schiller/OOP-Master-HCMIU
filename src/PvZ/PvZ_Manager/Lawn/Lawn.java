@@ -2,11 +2,8 @@ package PvZ.PvZ_Manager.Lawn;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import PvZ.PvZ_Manager.Zombie.*;
 
 public class Lawn {

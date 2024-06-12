@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import Gui.AudioManager;
-
 import javax.swing.JPanel;
 
 import PvZ.PvZ_Manager.Lawn.LawnManager;
@@ -14,6 +12,7 @@ import PvZ.PvZ_Manager.Plant.OptionPlants;
 import PvZ.PvZ_Manager.Plant.PlantsManager;
 import PvZ.PvZ_Manager.Plant.Shovel;
 import PvZ.PvZ_Manager.Zombie.FlagMeter;
+import PvZ.PvZ_Manager.Zombie.TitleLevelGame;
 import PvZ.PvZ_Manager.Zombie.Zombie;
 import PvZ.PvZ_Manager.Zombie.ZombieManager;
 import PvZ.Sun.SunDrop;
@@ -28,14 +27,15 @@ public class Playing extends JPanel{
     private GameLoop gameLoop;
     private Map_Background bg;
     private FlagMeter flag;
+    private TitleLevelGame titleLevelGame;
     private Random random;
     private Timer sunTimer;
     private Timer sunMovementTimer;
     private Timer lawnActionTimer;
     private Timer zombieSpawnTimer;
     private Timer zombieActionTimer;
-    private boolean gameEnded = false;
-
+    private static boolean gameEnded = false;
+    private boolean titleDrawn = false; 
     public AudioManager sound = new AudioManager();
 
     public Playing(GameLoop gameLoop) {
@@ -52,10 +52,12 @@ public class Playing extends JPanel{
         ZombieManager.resetStaticVariables();
         bg = new Map_Background(this);
         flag=new FlagMeter(zombieManager);
+        titleLevelGame = new TitleLevelGame();
+        titleLevelGame.showTitleForDuration(4);
         shovel=new Shovel(plantsManager,optionPlants);
         random = new Random();
         gameEnded = false;
-
+        titleDrawn = false;
     }
 
     public void stopGame() {
@@ -82,6 +84,7 @@ public class Playing extends JPanel{
         startSunSpawner();
         LawnAction();
         startCharacterSpawnAndAction();
+        AudioManager.ZombieStart();
     }
 
     public void resetGame() {
@@ -93,7 +96,7 @@ public class Playing extends JPanel{
     //User Mouse Click
     public void handleMouseClick(int mouseX, int mouseY) {
         sunDrop.handleSunClick(mouseX, mouseY);
-        if (!optionPlants.isChoose()) {
+        if (optionPlants.isChoose()==false) {
             optionPlants.handPlantsChoose(mouseX, mouseY);
         } else {
             int previous_X = optionPlants.getXSpwan();
@@ -157,36 +160,51 @@ public class Playing extends JPanel{
     }
 
     public void startCharacterSpawnAndAction() {
-        System.out.println(ZombieManager.getLevel());
         int maxZombies = ZombieManager.getLevel() * 10;
         zombieSpawnTimer = new Timer();
         zombieSpawnTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 synchronized (zombieManager.ZombieList()) {
-                    if (ZombieManager.getCountZombie() < maxZombies) {
-                        zombieManager.SpawnZombie();
-                        repaint();
+                    if (gameEnded) {
+                        zombieSpawnTimer.cancel();
+                        return;
                     }
-                    if (zombieManager.ZombieList().isEmpty() && ZombieManager.getCountZombie() >= maxZombies && gameEnded==false) {
+                    zombieManager.waveZombie();
+                    if (zombieManager.ZombieList().isEmpty() && ZombieManager.getCountZombie() >= maxZombies && !gameEnded) {
                         gameEnded = true;
+                        AudioManager.Win();
                         GameScenes.setGameScenes(GameScenes.OVERGAME);
                         gameLoop.repaint();
                     }
                 }
             }
         }, 0, new Random().nextInt(5000) + 2000);
-
+    
         zombieActionTimer = new Timer();
         zombieActionTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 synchronized (zombieManager.ZombieList()) {
+                    if (gameEnded) {
+                        zombieActionTimer.cancel();
+                        return;
+                    }
                     ArrayList<Zombie> zombiesCopy = new ArrayList<>(zombieManager.ZombieList());
                     plantsManager.PlantsAction(zombiesCopy, sunDrop);
                     zombieManager.ZombieAction(plantsManager.getPlantsList());
                     zombieManager.ZombieDead();
                     plantsManager.DeadPlant();
+                    for (Zombie zombie : zombieManager.ZombieList()) {
+                        if (zombie.getX() <= 20) {
+                            gameEnded = true;
+                            AudioManager.CrazyDaveScream();
+                            AudioManager.Lose();
+                            GameScenes.setGameScenes(GameScenes.OVERGAME);
+                            gameLoop.repaint();
+                            break;
+                        }
+                    }
                 }
                 repaint();
             }
@@ -202,5 +220,9 @@ public class Playing extends JPanel{
         lawnManager.render(g2);
         sunDrop.drawStorage(g2);
         zombieManager.render(g2);
+        titleLevelGame.render(g2);
+    }
+    public static boolean isGameEnded() {
+        return gameEnded;
     }
 }
