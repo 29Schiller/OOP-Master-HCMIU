@@ -15,7 +15,7 @@ public class GameLoop extends JPanel implements Runnable {
      public GameLoop() {
         isRunning = true;
         initclasses();
-        MouseManager mouseListener = new MouseManager(this, menuGame,playing, loose);
+        MouseManager mouseListener = new MouseManager(this, menuGame,playing, loose,win);
         this.addMouseListener(mouseListener);
     }
 

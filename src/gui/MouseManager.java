@@ -7,13 +7,15 @@ public class MouseManager extends MouseAdapter{
     private MenuState menuGame;
     private LooseState loose;
     private Playing playing;
+    private WinState win;
     private GameLoop gameLoop;
 
-    public MouseManager(GameLoop gameLoop, MenuState menuGame,Playing playing, LooseState loose) {
+    public MouseManager(GameLoop gameLoop, MenuState menuGame,Playing playing, LooseState loose,WinState win) {
         this.gameLoop = gameLoop;
         this.menuGame = menuGame;
         this.loose = loose;
         this.playing=playing;
+        this.win=win;
     }
 
     @Override
@@ -26,8 +28,11 @@ public class MouseManager extends MouseAdapter{
         }else if(GameScenes.gameScenes==GameScenes.PLAYING){
             playing.handleMouseClick(mouseX, mouseY);
         }
-         else if (GameScenes.gameScenes == GameScenes.LOOSE) {
+        else if (GameScenes.gameScenes == GameScenes.LOOSE) {
             loose.handleMouseClick(mouseX, mouseY);
+        }
+        else if (GameScenes.gameScenes == GameScenes.WIN) {
+            win.handleMouseClick(mouseX, mouseY);
         }
     }
 }
