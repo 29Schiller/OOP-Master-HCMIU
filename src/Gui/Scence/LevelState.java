@@ -1,20 +1,22 @@
-package Gui;
+package Gui.Scence;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
-import PvZ.PvZ_Manager.Zombie.ZombieManager;
-
-public class LevelScenes {
+import Controller.*;
+import Controller.PvZ.ZombieManager;
+import Controller.Scene.SceneManager;
+import Gui.Time.GameLoop;
+import Gui.Scence.*;
+public class LevelState {
     private GameLoop gameLoop;
     private BufferedImage levelImage;
     private BufferedImage[] level=new BufferedImage[6];
     private Rectangle bounds1,bounds2,bounds3,bounds4,bounds5,bounds6;
-    public LevelScenes(GameLoop gameLoop){
+    public LevelState(GameLoop gameLoop){
         this.gameLoop=gameLoop;
         bounds1=new Rectangle(555,280,80,80);
         bounds2=new Rectangle(685,280,80,80);
@@ -36,37 +38,37 @@ public class LevelScenes {
         if(this.getBounds1().contains(mouseX,mouseY)){
             ZombieManager.setLevel(1);
             gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
+            SceneManager.setGameScenes(SceneManager.PLAYING); 
             gameLoop.repaint(); 
         }
         else if (this.getBounds2().contains(mouseX,mouseY)){
             ZombieManager.setLevel(2);
             gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
+            SceneManager.setGameScenes(SceneManager.PLAYING); 
             gameLoop.repaint(); 
         }
         else if (this.getBounds3().contains(mouseX,mouseY)){
             ZombieManager.setLevel(3);
             gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
+            SceneManager.setGameScenes(SceneManager.PLAYING); 
             gameLoop.repaint(); 
         }
         else if (this.getBounds4().contains(mouseX,mouseY)){
             ZombieManager.setLevel(4);
             gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
+            SceneManager.setGameScenes(SceneManager.PLAYING); 
             gameLoop.repaint(); 
         }
         else if (this.getBounds5().contains(mouseX,mouseY)){
             ZombieManager.setLevel(5);
             gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
+            SceneManager.setGameScenes(SceneManager.PLAYING); 
             gameLoop.repaint(); 
         }
         else if (this.getBounds6().contains(mouseX,mouseY)){
             ZombieManager.setLevel(6);
             gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
+            SceneManager.setGameScenes(SceneManager.PLAYING); 
             gameLoop.repaint(); 
         } 
     }

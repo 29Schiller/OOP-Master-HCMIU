@@ -1,4 +1,4 @@
-package Gui;
+package Controller.Audio;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

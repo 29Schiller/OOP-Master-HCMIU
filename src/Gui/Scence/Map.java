@@ -1,14 +1,14 @@
-package Gui;
+package Gui.Scence;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class Map_Background {
+public class Map {
     public BufferedImage background;
 
-    public Map_Background(Playing gamePanel){
+    public Map(PlayingState gamePanel){
         getBackground();
     }
 

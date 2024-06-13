@@ -1,19 +1,28 @@
-package Gui;
+package Gui.Time;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+
+import Controller.Listener.*;
+import Controller.Scene.SceneManager;
+import Gui.Scence.LevelState;
+import Gui.Scence.LoseState;
+import Gui.Scence.MenuState;
+import Gui.Scence.PlayingState;
+import Gui.Scence.WinState;
 
 public class GameLoop extends JPanel implements Runnable {
     private Boolean isRunning;
     private final long FPS = 60;
     private final long PERIOD = 1000 * 1000000 / FPS; 
     private MenuState menuGame;
-    private Playing playing;
-    private LooseState loose;
+    private PlayingState playing;
+    private LoseState loose;
     private WinState win;
-    private LevelScenes level;
-     public GameLoop() {
+    private LevelState level;
+    
+    public GameLoop() {
         isRunning = true;
         initclasses();
         MouseManager mouseListener = new MouseManager(this, menuGame,level,playing, loose,win);
@@ -33,25 +42,25 @@ public class GameLoop extends JPanel implements Runnable {
         return menuGame;    
     }
 
-    public Playing getPlaying() {
+    public PlayingState getPlaying() {
         return playing;
     }
 
-    public LooseState getOverGame() {
+    public LoseState getOverGame() {
         return loose;
     }
     public WinState getWinState() {
         return win;
     }
-    public LevelScenes getLevelstate() {
+    public LevelState getLevelstate() {
         return level;
     }
 
     public void initclasses() {
         menuGame = new MenuState(this);
-        level=new LevelScenes(this);
-        playing = new Playing(this);
-        loose = new LooseState(this);
+        level=new LevelState(this);
+        playing = new PlayingState(this);
+        loose = new LoseState(this);
         win =new WinState(this);
     }
 
@@ -62,7 +71,7 @@ public class GameLoop extends JPanel implements Runnable {
         render(g2);
     }
     public void render(Graphics2D g2) {
-        switch (GameScenes.gameScenes) {
+        switch (SceneManager.gameScenes) {
             case MENU:
                 menuGame.render(g2);
                 break;

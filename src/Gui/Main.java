@@ -4,11 +4,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 
-public class GameFrame extends JFrame{
+import Gui.Time.GameLoop;
+
+public class Main extends JFrame{
     public static final int SCREEN_WIDTH = 1300;
     public static final int SCREEN_HEIGHT = 750;
 
-    public GameFrame() {
+    public Main() {
         Toolkit toolkit = this.getToolkit();
         Dimension dimension = toolkit.getScreenSize();
         this.setBounds((dimension.width - SCREEN_WIDTH) / 2, (dimension.height - SCREEN_HEIGHT) / 2, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -24,7 +26,7 @@ public class GameFrame extends JFrame{
     }
 
     public static void main(String[] args) {
-        GameFrame gameFrame = new GameFrame();
+        Main gameFrame = new Main();
         GameLoop gameLoop = new GameLoop();
         gameFrame.add(gameLoop);
         gameFrame.setVisible(true);

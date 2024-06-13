@@ -1,4 +1,4 @@
-package Gui;
+package Gui.Scence;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,7 +7,10 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import PvZ.PvZ_Manager.Zombie.ZombieManager;
+
+import Controller.PvZ.ZombieManager;
+import Controller.Scene.SceneManager;
+import Gui.Time.GameLoop;
 
 public class WinState {
     private BufferedImage overScene;
@@ -80,12 +83,12 @@ public class WinState {
     public void handleMouseClick(int mouseX, int mouseY) {
         if (this.getBounds1().contains(mouseX, mouseY)) {
             gameLoop.getLevelstate();
-            GameScenes.setGameScenes(GameScenes.LEVEL); 
+            SceneManager.setGameScenes(SceneManager.LEVEL); 
             gameLoop.repaint();
         }
         if (this.getBounds2().contains(mouseX, mouseY)) {
             gameLoop.getMenuGame();
-            GameScenes.setGameScenes(GameScenes.MENU);
+            SceneManager.setGameScenes(SceneManager.MENU);
             gameLoop.repaint();
         }
     }

@@ -1,10 +1,14 @@
-package Gui;
+package Gui.Scence;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
+import Controller.Audio.AudioManager;
+import Controller.Scene.SceneManager;
+import Gui.Time.GameLoop;
 
 public class MenuState {
     private GameLoop gameLoop;
@@ -39,7 +43,7 @@ public class MenuState {
     public void handleMouseClick(int mouseX, int mouseY) {
         if(this.getBounds().contains(mouseX,mouseY)){
             gameLoop.getLevelstate();
-            GameScenes.setGameScenes(GameScenes.LEVEL); 
+            SceneManager.setGameScenes(SceneManager.LEVEL); 
             gameLoop.repaint();
         }
     }

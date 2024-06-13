@@ -1,7 +1,9 @@
 package PvZ.PvZ_Manager.Zombie;
 
 import javax.imageio.ImageIO;
-import Gui.AudioManager;
+
+import Controller.Audio.AudioManager;
+
 import java.io.IOException;
 import java.awt.*;
 import java.awt.image.BufferedImage;

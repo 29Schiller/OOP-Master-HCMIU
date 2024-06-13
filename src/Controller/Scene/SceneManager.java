@@ -1,9 +1,9 @@
-package Gui;
+package Controller.Scene;
 
-public enum GameScenes {
+public enum SceneManager {
     MENU, LEVEL, PLAYING, WIN, LOOSE;
-    public static GameScenes gameScenes = GameScenes.MENU;
-    public static void setGameScenes(GameScenes scene) {
+    public static SceneManager gameScenes = SceneManager.MENU;
+    public static void setGameScenes(SceneManager scene) {
         gameScenes = scene;
     }
 }

@@ -1,4 +1,4 @@
-package Gui;
+package Gui.Scence;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -6,25 +6,28 @@ import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import PvZ.PvZ_Manager.Lawn.LawnManager;
-import PvZ.PvZ_Manager.Plant.OptionPlants;
-import PvZ.PvZ_Manager.Plant.PlantsManager;
+import Controller.Audio.AudioManager;
+import Controller.PvZ.LawnManager;
+import Controller.PvZ.PlantsManager;
+import Controller.PvZ.ZombieManager;
+import Controller.Scene.SceneManager;
+import Gui.Component.Plants_Bar;
+import Gui.Component.TitleLevelGame;
+import Gui.Time.GameLoop;
 import PvZ.PvZ_Manager.Plant.Shovel;
 import PvZ.PvZ_Manager.Zombie.FlagMeter;
-import PvZ.PvZ_Manager.Zombie.TitleLevelGame;
 import PvZ.PvZ_Manager.Zombie.Zombie;
-import PvZ.PvZ_Manager.Zombie.ZombieManager;
 import PvZ.Sun.SunDrop;
 
-public class Playing extends JPanel {
+public class PlayingState extends JPanel {
     private SunDrop sunDrop;
     private Shovel shovel;
     private PlantsManager plantsManager;
     private ZombieManager zombieManager;
-    private OptionPlants optionPlants;
+    private Plants_Bar optionPlants;
     private LawnManager lawnManager;
     private GameLoop gameLoop;
-    private Map_Background bg;
+    private Map bg;
     private FlagMeter flag;
     private TitleLevelGame titleLevelGame;
     public static Random random = new Random();
@@ -37,7 +40,7 @@ public class Playing extends JPanel {
     private boolean titleDrawn = false;
     public AudioManager sound = new AudioManager();
 
-    public Playing(GameLoop gameLoop) {
+    public PlayingState(GameLoop gameLoop) {
         this.gameLoop = gameLoop;
         initializeGameComponents();
     }
@@ -45,13 +48,13 @@ public class Playing extends JPanel {
     // Restart New Game
     public void initializeGameComponents() {
         sunDrop = new SunDrop();
-        optionPlants = new OptionPlants();
+        optionPlants = new Plants_Bar();
         lawnManager = new LawnManager();
         plantsManager = new PlantsManager();
         zombieManager = new ZombieManager();
         ZombieManager.resetStaticVariables();
         zombieManager.updateMaxZombies();
-        bg = new Map_Background(this);
+        bg = new Map(this);
         flag = new FlagMeter(zombieManager);
         titleLevelGame = new TitleLevelGame();
         titleLevelGame.showTitleForDuration(4);
@@ -161,7 +164,7 @@ public class Playing extends JPanel {
                 if (zombieManager.ZombieList().isEmpty() && ZombieManager.getCountZombie() >= maxZombies && !gameEnded) {
                     gameEnded = true;
                     AudioManager.Win();
-                    GameScenes.setGameScenes(GameScenes.WIN);
+                    SceneManager.setGameScenes(SceneManager.WIN);
                     gameLoop.repaint();
                 }
             }
@@ -184,7 +187,7 @@ public class Playing extends JPanel {
                         gameEnded = true;
                         AudioManager.CrazyDaveScream();
                         AudioManager.Lose();
-                        GameScenes.setGameScenes(GameScenes.LOOSE);
+                        SceneManager.setGameScenes(SceneManager.LOOSE);
                         gameLoop.repaint();
                         break;
                     }

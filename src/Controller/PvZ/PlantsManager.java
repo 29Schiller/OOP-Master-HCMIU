@@ -1,21 +1,26 @@
-package PvZ.PvZ_Manager.Plant;
+package Controller.PvZ;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Gui.AudioManager;
+import Controller.Audio.AudioManager;
+import Gui.Component.Plants_Bar;
+import PvZ.PvZ_Manager.Plant.Pea;
+import PvZ.PvZ_Manager.Plant.Plants;
+import PvZ.PvZ_Manager.Plant.SunFlower;
+import PvZ.PvZ_Manager.Plant.Wallnut;
 import PvZ.PvZ_Manager.Zombie.Zombie;
 import PvZ.Sun.SunDrop;
 
 public class PlantsManager {
-    private OptionPlants optionPlants;
+    private Plants_Bar optionPlants;
     private ArrayList<Plants> plantsList = new ArrayList<>();
     private ArrayList<Plants> plantsUnpaid = new ArrayList<>();
 
     public PlantsManager() {
-        this.optionPlants = new OptionPlants();
+        this.optionPlants = new Plants_Bar();
         this.optionPlants.importImage();
     }
 

@@ -6,13 +6,16 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import Controller.PvZ.PlantsManager;
+import Gui.Component.Plants_Bar;
+
 public class Shovel {
     private BufferedImage shovelImage;
     private boolean isChoose=false;
     private Rectangle bounds;
-    private OptionPlants op;
+    private Plants_Bar op;
     private PlantsManager plantsManager;
-    public Shovel(PlantsManager plantsManager,OptionPlants op){
+    public Shovel(PlantsManager plantsManager,Plants_Bar op){
         this.plantsManager=plantsManager;
         this.op=op;
         importImage();

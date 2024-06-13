@@ -1,13 +1,13 @@
-package PvZ.PvZ_Manager.Plant;
+package Gui.Component;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-import Gui.AudioManager;
+import Controller.Audio.AudioManager;
 
-public class OptionPlants {
+public class Plants_Bar {
     private Rectangle bound1,bound2,bound3;
     private BufferedImage peaChoose;
     private BufferedImage wallNutChoose;
@@ -17,7 +17,7 @@ public class OptionPlants {
     private int rowSpawn;
     private int XSpwan;
     private static boolean[][] plantPositions;
-    public OptionPlants(){
+    public Plants_Bar(){
         bound1=new Rectangle(120,20,100,65);
         bound2=new Rectangle(230,20,100,65);
         bound3=new Rectangle(340,20,100,65);

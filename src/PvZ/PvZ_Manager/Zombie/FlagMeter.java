@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import Controller.PvZ.ZombieManager;
+
 public class FlagMeter {
     private BufferedImage FlagMeterFull;
     private BufferedImage FlagMeterEmpty;

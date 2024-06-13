@@ -1,11 +1,16 @@
-package PvZ.PvZ_Manager.Zombie;
+package Controller.PvZ;
 
 import java.awt.Graphics2D;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
-import Gui.Playing;
+
+import Gui.Component.TitleLevelGame;
+import Gui.Scence.PlayingState;
 import PvZ.PvZ_Manager.Plant.Plants;
+import PvZ.PvZ_Manager.Zombie.FemaleZombie;
+import PvZ.PvZ_Manager.Zombie.MaleZombie;
+import PvZ.PvZ_Manager.Zombie.Zombie;
 
 public class ZombieManager {
     Plants plants;
@@ -21,10 +26,10 @@ public class ZombieManager {
     }
 
     public void SpawnZombie(int type) {
-        if (Playing.isGameEnded()) {
+        if (PlayingState.isGameEnded()) {
             return;
         }
-        int Startrow = Playing.random.nextInt(5) + 1;
+        int Startrow = PlayingState.random.nextInt(5) + 1;
         if (type == 0) {
             zombieList.add(new MaleZombie(1300, Startrow));
             setCountZombie(getCountZombie() + 1);

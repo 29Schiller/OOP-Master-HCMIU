@@ -1,4 +1,4 @@
-package Gui;
+package Gui.Scence;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,9 +7,12 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import PvZ.PvZ_Manager.Zombie.ZombieManager;
 
-public class LooseState {
+import Controller.PvZ.ZombieManager;
+import Controller.Scene.SceneManager;
+import Gui.Time.GameLoop;
+
+public class LoseState {
     private BufferedImage overScene;
     private BufferedImage newGame;
     private BufferedImage exit;
@@ -18,7 +21,7 @@ public class LooseState {
     private boolean checkPlay;
     private boolean checkExit;
     private GameLoop gameLoop;
-    public LooseState(GameLoop gameLoop) {
+    public LoseState(GameLoop gameLoop) {
         this.gameLoop=gameLoop;
         importImage();
         bounds1 = new Rectangle(400, 500, 200, 100);
@@ -80,12 +83,12 @@ public class LooseState {
     public void handleMouseClick(int mouseX, int mouseY) {
         if (this.getBounds1().contains(mouseX, mouseY)) {
             gameLoop.getPlaying().resetGame();
-            GameScenes.setGameScenes(GameScenes.PLAYING); 
+            SceneManager.setGameScenes(SceneManager.PLAYING); 
             gameLoop.repaint(); 
         }
         if (this.getBounds2().contains(mouseX, mouseY)) {
             gameLoop.getMenuGame();
-            GameScenes.setGameScenes(GameScenes.MENU);
+            SceneManager.setGameScenes(SceneManager.MENU);
             gameLoop.repaint();
         }
     }

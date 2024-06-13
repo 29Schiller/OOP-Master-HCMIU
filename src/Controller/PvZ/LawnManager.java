@@ -1,10 +1,11 @@
-package PvZ.PvZ_Manager.Lawn;
+package Controller.PvZ;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import PvZ.PvZ_Manager.Lawn.Lawn;
 import PvZ.PvZ_Manager.Zombie.Zombie;
 
 public class LawnManager {

@@ -1,4 +1,4 @@
-package Gui;
+package Controller.Font;
 
 import java.awt.Font;
 import java.awt.FontFormatException;

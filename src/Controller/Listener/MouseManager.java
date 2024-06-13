@@ -1,17 +1,23 @@
-package Gui;
+package Controller.Listener;
+
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import Controller.Scene.SceneManager;
+import Gui.Scence.*;
+import Gui.Time.*;
+
+
 public class MouseManager extends MouseAdapter{
     private MenuState menuGame;
-    private LooseState loose;
-    private Playing playing;
+    private LoseState loose;
+    private PlayingState playing;
     private WinState win;
     private GameLoop gameLoop;
-    private LevelScenes level;
+    private LevelState level;
     
-    public MouseManager(GameLoop gameLoop, MenuState menuGame,LevelScenes level,Playing playing, LooseState loose,WinState win) {
+    public MouseManager(GameLoop gameLoop, MenuState menuGame,LevelState level,PlayingState playing, LoseState loose,WinState win) {
         this.gameLoop = gameLoop;
         this.menuGame = menuGame;
         this.loose = loose;
@@ -25,19 +31,19 @@ public class MouseManager extends MouseAdapter{
         int mouseX = e.getX();
         int mouseY = e.getY();
 
-        if (GameScenes.gameScenes == GameScenes.MENU) {
+        if (SceneManager.gameScenes == SceneManager.MENU) {
             menuGame.handleMouseClick(mouseX, mouseY);
         }
-        else if (GameScenes.gameScenes == GameScenes.LEVEL) {
+        else if (SceneManager.gameScenes == SceneManager.LEVEL) {
             level.handleMouseClick(mouseX, mouseY);
         }
-        else if(GameScenes.gameScenes==GameScenes.PLAYING){
+        else if(SceneManager.gameScenes==SceneManager.PLAYING){
             playing.handleMouseClick(mouseX, mouseY);
         }
-        else if (GameScenes.gameScenes == GameScenes.LOOSE) {
+        else if (SceneManager.gameScenes == SceneManager.LOOSE) {
             loose.handleMouseClick(mouseX, mouseY);
         }
-        else if (GameScenes.gameScenes == GameScenes.WIN) {
+        else if (SceneManager.gameScenes == SceneManager.WIN) {
             win.handleMouseClick(mouseX, mouseY);
         }
     }

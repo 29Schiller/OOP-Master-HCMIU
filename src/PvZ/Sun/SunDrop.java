@@ -2,13 +2,14 @@ package PvZ.Sun;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+import Controller.Audio.AudioManager;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.io.IOException;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-
-import Gui.AudioManager;;
+import java.awt.image.BufferedImage;;
 
 public class SunDrop extends JPanel{
     private ArrayList<Sun> SunList = new ArrayList<>();
