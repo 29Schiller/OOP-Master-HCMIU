@@ -18,7 +18,7 @@ public class MenuState {
         this.gameLoop=gameLoop;
         bounds=new Rectangle(400,500,500,100);
         importImage();
-        //AudioManager.play_Theme();
+        AudioManager.play_Theme();
     }
     public void importImage(){
         try {menuGame=ImageIO.read(getClass().getResourceAsStream("/Resource/MenuGame/wallpaper.jpg"));
