@@ -6,7 +6,7 @@ __Plants vs Zombies__ (abbreviated as PvZ) is a tower defense video game develop
 
 # Dev
   + [Nguyễn Minh Đạt](https://github.com/29Schiller) 
-  + [Đặng Hoang Nam](https://github.com/Hoangnam25012004)
+  + [Đặng Hoàng Nam](https://github.com/Hoangnam25012004)
   + [Nguyễn Hoàng Thiện](https://github.com/THien2304)
   + [Nguyễn Hải Phú](https://github.com/haiphu241)
   + [Hà Anh Khoa](https://github.com/THien2304)
