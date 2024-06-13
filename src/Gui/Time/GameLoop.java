@@ -14,18 +14,19 @@ import Gui.Scence.WinState;
 public class GameLoop extends JPanel implements Runnable {
     private Boolean isRunning;
     private final long FPS = 60;
-    private final long PERIOD = 1000 * 1000000 / FPS; 
+    private final long PERIOD = 1000 * 1000000 / FPS;
     private MenuState menuGame;
     private PlayingState playing;
     private LoseState loose;
     private WinState win;
     private LevelState level;
-    
+
     public GameLoop() {
         isRunning = true;
         initclasses();
-        MouseManager mouseListener = new MouseManager(this, menuGame,level,playing, loose,win);
+        MouseManager mouseListener = new MouseManager(this, menuGame, level, playing, loose, win);
         this.addMouseListener(mouseListener);
+        this.addMouseMotionListener(mouseListener);
     }
 
     public void stop() {
@@ -38,7 +39,7 @@ public class GameLoop extends JPanel implements Runnable {
     }
 
     public MenuState getMenuGame() {
-        return menuGame;    
+        return menuGame;
     }
 
     public PlayingState getPlaying() {
@@ -48,19 +49,21 @@ public class GameLoop extends JPanel implements Runnable {
     public LoseState getOverGame() {
         return loose;
     }
+
     public WinState getWinState() {
         return win;
     }
+
     public LevelState getLevelstate() {
         return level;
     }
 
     public void initclasses() {
         menuGame = new MenuState(this);
-        level=new LevelState(this);
+        level = new LevelState(this);
         playing = new PlayingState(this);
         loose = new LoseState(this);
-        win =new WinState(this);
+        win = new WinState(this);
     }
 
     @Override
@@ -69,6 +72,7 @@ public class GameLoop extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
         render(g2);
     }
+
     public void render(Graphics2D g2) {
         switch (SceneManager.gameScenes) {
             case MENU:
@@ -88,6 +92,7 @@ public class GameLoop extends JPanel implements Runnable {
                 break;
         }
     }
+
     @Override
     public void run() {
         long beginTime;
