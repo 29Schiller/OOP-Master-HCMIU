@@ -9,7 +9,7 @@ __Plants vs Zombies__ (abbreviated as PvZ) is a tower defense video game develop
   + [Đặng Hoàng Nam](https://github.com/Hoangnam25012004)
   + [Nguyễn Hoàng Thiện](https://github.com/THien2304)
   + [Nguyễn Hải Phú](https://github.com/haiphu241)
-  + [Hà Anh Khoa](https://github.com/THien2304)
+  + [Hà Anh Khoa](https://github.com/Tinntinn060104)
 
 ## Object 
 The project goal is to create a game based on 2D game concepts and have a conference inspired from the concepts of a platform game. The game is developed with the goal of mastering Java Programming and implementing OOP and SOLID design principles while creating an enjoyable and accessible gaming experience. This project was specifically designed using the Java language, incorporating Object-Oriented Programming. This approach has effectively resolved several issues that commonly arise when using the traditional Procedural-Oriented Method:
