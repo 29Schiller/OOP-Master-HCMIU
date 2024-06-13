@@ -90,7 +90,7 @@ public class SunDrop extends JPanel{
         g2n.setFont(font2);
         g2n.setColor(Color.YELLOW);
         g2n.drawString(String.format("%d",50), 190, 75);
-        g2n.drawString(String.format("%d",100 ),295,75);
-        g2n.drawString(String.format("%d",50 ),410,75);
+        g2n.drawString(String.format("%d",75),295,75);
+        g2n.drawString(String.format("%d",25),410,75);
     }
 }

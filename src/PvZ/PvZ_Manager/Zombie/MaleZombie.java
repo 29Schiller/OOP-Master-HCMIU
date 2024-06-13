@@ -25,7 +25,7 @@ public class MaleZombie extends Zombie {
     public MaleZombie(int X, int row) {
         super(X, row);
         setHP(100);
-        setSpeed(8);
+        setSpeed(2);
         setDamge(25);
         setAttackWaitingTime(1000);
         setCollide(false);
