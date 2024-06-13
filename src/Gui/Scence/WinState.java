@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-
 import Controller.PvZ.ZombieManager;
 import Controller.Scene.SceneManager;
 import Gui.Time.GameLoop;

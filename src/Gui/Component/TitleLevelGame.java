@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import Controller.Font.CustomFont;
 import Controller.PvZ.ZombieManager;
 

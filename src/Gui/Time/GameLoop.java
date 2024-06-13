@@ -3,7 +3,6 @@ package Gui.Time;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-
 import Controller.Listener.*;
 import Controller.Scene.SceneManager;
 import Gui.Scence.LevelState;

@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 import Gui.Component.TitleLevelGame;
 import Gui.Scence.PlayingState;
 import PvZ.PvZ_Manager.Plant.Plants;

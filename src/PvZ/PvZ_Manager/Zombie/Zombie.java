@@ -2,7 +2,6 @@ package PvZ.PvZ_Manager.Zombie;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-
 import PvZ.PvZ_Manager.Plant.Plants;
 
 public abstract class Zombie {

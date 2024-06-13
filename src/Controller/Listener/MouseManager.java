@@ -1,13 +1,10 @@
 package Controller.Listener;
 
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import Controller.Scene.SceneManager;
 import Gui.Scence.*;
 import Gui.Time.*;
-
 
 public class MouseManager extends MouseAdapter{
     private MenuState menuGame;

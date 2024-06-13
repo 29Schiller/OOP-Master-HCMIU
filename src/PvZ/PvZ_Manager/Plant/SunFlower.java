@@ -10,7 +10,6 @@ import javax.imageio.ImageIO;
 import PvZ.PvZ_Manager.Zombie.Zombie;
 import PvZ.Sun.*;
 
-
 public class SunFlower extends Plants{
     private int timeIndex=0;
     private int frameDelay = 3;

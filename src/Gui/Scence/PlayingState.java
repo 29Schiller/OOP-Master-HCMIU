@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 import Controller.Audio.AudioManager;
 import Controller.PvZ.LawnManager;
 import Controller.PvZ.PlantsManager;
