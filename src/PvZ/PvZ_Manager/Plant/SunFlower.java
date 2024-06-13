@@ -23,7 +23,7 @@ public class SunFlower extends Plants{
         setDamage(0);
         setFrozzen(false);
         setHP(100);
-        setPrice(50);
+        setPrice(25);
         setTimeCDaction(10000);
         importImage();
     }

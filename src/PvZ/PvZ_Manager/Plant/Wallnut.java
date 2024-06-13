@@ -13,7 +13,7 @@ public class Wallnut extends Plants{
         super(X, row, frozzen);
         setHP(250);
         setDamage(0);
-        setPrice(100);
+        setPrice(75);
         setFrozzen(false);
         importImage();
     }
