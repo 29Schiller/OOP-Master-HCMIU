@@ -54,8 +54,8 @@ The project goal is to create a game based on 2D game concepts and have a confer
 
 ●  We want to express our sincerest thanks to our lecturers and the people who have helped us to achieve this project's goals:
 
-+ Dr. Tran Thanh Tung
++ Dr. Trần Thanh Tùng
   
-+ MSc. Nguyen Trung Nghia
++ MSc. Nguyễn Trung Nghĩa
 
 
