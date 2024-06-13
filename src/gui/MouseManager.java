@@ -10,6 +10,7 @@ public class MouseManager extends MouseAdapter{
     private WinState win;
     private GameLoop gameLoop;
     private LevelScenes level;
+    
     public MouseManager(GameLoop gameLoop, MenuState menuGame,LevelScenes level,Playing playing, LooseState loose,WinState win) {
         this.gameLoop = gameLoop;
         this.menuGame = menuGame;
