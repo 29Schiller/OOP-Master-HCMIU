@@ -25,9 +25,9 @@ The project goal is to create a game based on 2D game concepts and have a confer
 
 ● Your mission is to eliminate all the zombies approaching to defend our house 
 
-● You only have 1 life and 6 lawn mowers as the last citadels to help you defend from the Zombie horde
+● You only have 1 life and 5 lawn mowers as the last citadels to help you defend from the Zombie horde
 
-● When the 6 lawn mowers have been activated and removed, there will be nothing that can stop the zombies anymore when they reach the house. If they succeed, your “castle” will collapse and you will lose
+● When the 5 lawn mowers have been activated and removed, there will be nothing that can stop the zombies anymore when they reach the house. If they succeed, your “castle” will collapse and you will lose
 
 ● There are 3 types of plants for you to deploy and 2 types of zombies fighting against the player:
 + Plants: Pea-Shooter, Sunflower and Walnut
