@@ -39,7 +39,7 @@ The project goal is to create a game based on 2D game concepts and have a confer
 
 ## Screenshots from the game
 
-![Example Image](https://github.com/29Schiller/OOP_HCMIU_PLantVsZombies/blob/main/src/Resource/MenuGame/pvz_logo.png)
+![Example Image](https://github.com/29Schiller/OOP-Master-HCMIU/blob/main/src/Resource/MenuGame/pvz_logo.png)
 
 ![Example Image](https://github.com/29Schiller/OOP_HCMIU_PLantVsZombies/blob/main/src/Resource/MenuGame/wallpaper.jpg)
 
