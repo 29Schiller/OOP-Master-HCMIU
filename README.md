@@ -49,6 +49,10 @@ The project goal is to create a game based on 2D game concepts and have a confer
 
 ![Example Image](https://github.com/29Schiller/OOP-Master-HCMIU/blob/main/src/Resource/WinScence/GameOver.png)
 
+## Run The Game
+●  Go to folder src, find the folder GUI.
+●  Run the Main.java class to play the game.
+
 ## Acknowledgements
 ●  Developed by HCMIU students.
 
