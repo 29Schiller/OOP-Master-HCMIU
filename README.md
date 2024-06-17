@@ -3,13 +3,15 @@ ___Game project of OOP class___
 __Game name__: Plants vs Zombies  
 __Plants vs Zombies__ (abbreviated as PvZ) is a tower defense video game developed and originally published by a group of HCMIU students. The game involves homeowners who use a variety of different plants to prevent waves of zombies from reaching the house. When a horde of zombies begins to attempt to approach the house along parallel lanes, the player must protect the house by planting trees in the lane to shoot bullets that kill the zombies or harm them. Players collect a currency called "sun" to buy plants. If a zombie reaches the house by any lane, the level is considered failed and the player will have to restart that level. In this undertaking, our team has remade this game to bring players a new version of Plants vs Zombies with many changes and improvements.
 
+This is [Report](https://docs.google.com/document/d/1IikJLRwBJga8igVRn7n95v0NOd6c-GmmN6A5WZ08KQA/edit?usp=sharing) what we decribed throughout the working process.
+
 
 # Dev
   + [Nguyễn Minh Đạt](https://github.com/29Schiller) 
-  + [Đặng Hoang Nam](https://github.com/Hoangnam25012004)
+  + [Đặng Hoàng Nam](https://github.com/Hoangnam25012004)
   + [Nguyễn Hoàng Thiện](https://github.com/THien2304)
-  + Nguyễn Hải Phú
-  + [Hà Anh Khoa](https://github.com/THien2304)
+  + [Nguyễn Hải Phú](https://github.com/haiphu241)
+  + [Hà Anh Khoa](https://github.com/Tinntinn060104)
 
 ## Object 
 The project goal is to create a game based on 2D game concepts and have a conference inspired from the concepts of a platform game. The game is developed with the goal of mastering Java Programming and implementing OOP and SOLID design principles while creating an enjoyable and accessible gaming experience. This project was specifically designed using the Java language, incorporating Object-Oriented Programming. This approach has effectively resolved several issues that commonly arise when using the traditional Procedural-Oriented Method:
@@ -25,9 +27,9 @@ The project goal is to create a game based on 2D game concepts and have a confer
 
 ● Your mission is to eliminate all the zombies approaching to defend our house 
 
-● You only have 1 life and 6 lawn mowers as the last citadels to help you defend from the Zombie horde
+● You only have 1 life and 5 lawn mowers as the last citadels to help you defend from the Zombie horde
 
-● When the 6 lawn mowers have been activated and removed, there will be nothing that can stop the zombies anymore when they reach the house. If they succeed, your “castle” will collapse and you will lose
+● When the 5 lawn mowers have been activated and removed, there will be nothing that can stop the zombies anymore when they reach the house. If they succeed, your “castle” will collapse and you will lose
 
 ● There are 3 types of plants for you to deploy and 2 types of zombies fighting against the player:
 + Plants: Pea-Shooter, Sunflower and Walnut
@@ -39,13 +41,17 @@ The project goal is to create a game based on 2D game concepts and have a confer
 
 ## Screenshots from the game
 
-![Example Image](https://github.com/29Schiller/OOP_HCMIU_PLantVsZombies/blob/main/src/Resource/MenuGame/pvz_logo.png)
+![Example Image](https://github.com/29Schiller/OOP-Master-HCMIU/blob/main/src/Resource/MenuGame/pvz_logo.png)
 
-![Example Image](https://github.com/29Schiller/OOP_HCMIU_PLantVsZombies/blob/main/src/Resource/MenuGame/wallpaper.jpg)
+![Example Image](https://github.com/29Schiller/OOP-Master-HCMIU/blob/main/src/Resource/MenuGame/wallpaper.jpg)
 
 ![Example Image](https://github.com/29Schiller/OOP_HCMIU_PLantVsZombies/blob/9a5dd1918a7a837c26afadb7dd7e151b427576ec/src/Resource/Yard.jpg)
 
-![Example Image](https://github.com/29Schiller/OOP_HCMIU_PLantVsZombies/blob/main/src/Resource/WinScence/GameOver.png)
+![Example Image](https://github.com/29Schiller/OOP-Master-HCMIU/blob/main/src/Resource/WinScence/GameOver.png)
+
+## Run The Game
+●  Go to folder src, find the folder GUI.
+●  Run the Main.java class to play the game.
 
 ## Acknowledgements
 ●  Developed by HCMIU students.
@@ -54,8 +60,8 @@ The project goal is to create a game based on 2D game concepts and have a confer
 
 ●  We want to express our sincerest thanks to our lecturers and the people who have helped us to achieve this project's goals:
 
-+ Dr. Tran Thanh Tung
++ Dr. Trần Thanh Tùng
   
-+ MSc. Nguyen Thanh Nghia
++ MSc. Nguyễn Trung Nghĩa
 
 
