@@ -81,9 +81,9 @@ public class LoseState {
 
     public void handleMouseClick(int mouseX, int mouseY) {
         if (this.getBounds1().contains(mouseX, mouseY)) {
-            gameLoop.getPlaying().resetGame();
-            SceneManager.setGameScenes(SceneManager.PLAYING); 
-            gameLoop.repaint(); 
+            gameLoop.getLevelstate();
+            SceneManager.setGameScenes(SceneManager.LEVEL); 
+            gameLoop.repaint();
         }
         if (this.getBounds2().contains(mouseX, mouseY)) {
             gameLoop.getMenuGame();

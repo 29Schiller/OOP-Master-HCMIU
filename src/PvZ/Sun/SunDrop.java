@@ -56,7 +56,6 @@ public class SunDrop extends JPanel{
                 sunscore+=25;}}
         SunList.removeAll(sunsToRemoveByClicked);
         repaint();
-
     }
 
     public synchronized void sunMove() {

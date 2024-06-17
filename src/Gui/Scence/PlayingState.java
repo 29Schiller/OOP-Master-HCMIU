@@ -200,7 +200,7 @@ public class PlayingState extends JPanel {
     public void render(Graphics2D g2) {
         bg.render(g2);
         flag.render(g2);
-        shovel.render(g2);
+        shovel.render(g2);  
         sunDrop.render(g2);
         plantsManager.render(g2, zombieManager.ZombieList(), sunDrop);
         lawnManager.render(g2);

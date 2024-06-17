@@ -36,7 +36,7 @@ public class ZombieManager {
         } else if (type == 1) {
             zombieList.add(new FemaleZombie(1300, Startrow));
             setCountZombie(getCountZombie() + 1);
-            Points += 25;
+            Points += 15;
         }
     }
 
