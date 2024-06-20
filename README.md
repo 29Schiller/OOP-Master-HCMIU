@@ -51,6 +51,7 @@ The project goal is to create a game based on 2D game concepts and have a confer
 
 ## Run The Game
 ●  Go to folder src, find the folder GUI.
+
 ●  Run the Main.java class to play the game.
 
 ## Acknowledgements
